@@ -31,9 +31,6 @@ const router = useRouter()
 const route = useRoute()
 const props = defineProps(['note'])
 
-
-
-
 const CloseForm = () => {
   formActivete.value = true
   confirmationFlag.value = false

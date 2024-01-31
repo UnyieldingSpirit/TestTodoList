@@ -1,11 +1,11 @@
 <template>
-    <div class="note">
+    <div class="card">
         <div class="container" v-if="!note.formFlag">
-            <div class="note-card">
-                <div class="note-card__content">
-                    <div class="note-card__header">
+            <div class="card_item">
+                <div class="card__content">
+                    <div class="card__header">
                         <div class="check-container">
-                            <div class="note-card__content-details">
+                            <div class="card__content-details">
                                 <h4>
                                     {{ note.noteTitle }}
                                 </h4>
@@ -15,10 +15,13 @@
                             </div>
                         </div>
                     </div>
+                    <div v-if="note.noteData">
+                        {{ formatDateFrom(note.noteData) }}
+                    </div>
                 </div>
-                <div class="note-card__content_button">
-                    <el-button :icon="Edit" @click="OpenEndingForm(note.notesId)" />
-                    <el-button :icon="Delete" @click="OpenDeleteForm(note.notesId)" />
+                <div class="card__content_button">
+                    <el-button :icon="Edit" @click="OpenEndingForm(note.notesId, note)" />
+                    <el-button :icon="Delete" @click="OpenDeleteForm(note.notesId, note)" />
                 </div>
             </div>
         </div>
@@ -34,42 +37,20 @@ import {
     Delete,
 } from '@element-plus/icons-vue';
 import NotesForm from './NotesForm.vue';
-import { confirmationDisplay, confirmationFlag, confirmationText, data, desc, formActivete, noteIndicator, notes, title } from "@/modules/variables";
-import { findNoteById } from '../modules/base-function'
-import { CloseFormItem, OpeningEditingForm } from '../modules/open-edit-note'
-const props = defineProps(['note']);
-
-
-const OpenEndingForm = (id: string) => {
-    CloseFormItem()
-    OpeningEditingForm(id)
-    props.note.formFlag = true
-    formActivete.value = false;
-    confirmationFlag.value = false
-    confirmationText.value = props.note.noteTitle
-};
-
-
-
-const OpenDeleteForm = (id: string) => {
-    const noteEdit = findNoteById(id);
-    noteIndicator.value = noteEdit.notesId;
-    confirmationFlag.value = true;
-    confirmationDisplay.value = true;
-    confirmationText.value = props.note?.noteTitle || '';
-};
-
+import { formatDateFrom } from '../modules/base-function'
+import { OpenDeleteForm, OpenEndingForm } from '../modules/opening-closing-item'
+defineProps(['note']);
 </script>
 
 
 <style scoped>
-.note {
+.card {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.note-card {
+.card_item {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -80,14 +61,14 @@ const OpenDeleteForm = (id: string) => {
     border-bottom: 1px rgb(79, 78, 78) solid;
 }
 
-.note-card__content {
+.card__content {
     display: flex;
     justify-content: center;
     flex-direction: column;
     gap: 10px;
 }
 
-.note-card__header {
+.card__header {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,11 +99,7 @@ const OpenDeleteForm = (id: string) => {
 }
 
 
-
-
-
-
-.note-card__content-details {
+.card__content-details {
     display: flex;
     flex-direction: column;
     max-width: 350px;

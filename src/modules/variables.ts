@@ -1,6 +1,7 @@
 import { ref } from "vue";
 
 export const notes = ref([])
+export const history = ref([])
 export const title = ref('')
 export const desc = ref('')
 export const data = ref('')

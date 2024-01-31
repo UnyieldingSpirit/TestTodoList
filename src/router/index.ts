@@ -14,11 +14,7 @@ export const router = createRouter({
       name: 'TheActive',
       component: () => import('../views/TheActive.vue')
     },
-    {
-      path: '/filters',
-      name: 'TheFilters',
-      component: () => import('../views/TheFilters.vue')
-    },
+
     {
       path: '/history',
       name: 'TheHistory',

@@ -20,14 +20,14 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { notes } from './modules/variables';
+import { history, notes } from './modules/variables';
 
 onMounted(() => {
   try {
-    const storedNotes = JSON.parse(localStorage.getItem('notes')) || [];
-    notes.value = storedNotes;
+    notes.value = JSON.parse(localStorage.getItem('notes')) || [];
+    history.value = JSON.parse(localStorage.getItem('history')) || [];
   } catch (error) {
-    console.error('Error while retrieving notes from local storage:', error);
+    console.error('', error);
   }
 });
 

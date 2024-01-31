@@ -2,7 +2,7 @@
     <div class="sidebar">
         <div class="sidebar__user">
             <el-avatar :size="50" :src="circleUrl" />
-            Samvel
+            User
         </div>
         <div class="sidebar__menu" v-for="router in routers" :key="router">
             <router-link :to="router.path">
@@ -33,10 +33,7 @@ const { circleUrl } = toRefs(state)
     justify-content: space-between;
     flex-direction: column;
     gap: 10px;
-
 }
-
-
 .sidebar__menu_button-icon {
     width: 20px;
     height: 20px;

@@ -24,3 +24,66 @@ h2 {
   margin-left: 20px;
   margin-bottom: 20px;
 }
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  padding: 10px 20px;
+  margin: 0 auto;
+  color: white;
+  border-bottom: 1px rgb(79, 78, 78) solid;
+}
+
+.card__content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+  font-size: 20px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.check-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+}
+
+.el-button {
+  background: #213d5b;
+  color: white;
+  border: #3b82ce 1px solid;
+}
+
+
+
+
+.card__item_text-title-clickable {
+  cursor: pointer;
+}
+
+
+.card__content-details {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  width: 100%;
+  word-wrap: break-word;
+}
